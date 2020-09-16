@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated with glade 3.36.0 -->
+<interface>
+  <requires lib="gtk+" version="3.22"/>
+  <object class="GtkAdjustment" id="ajuste_da_lista">
+    <property name="upper">100</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">10</property>
+  </object>
+  <object class="GtkListStore" id="lista1">
+    <columns>
+      <!-- column-name id -->
+      <column type="gint"/>
+      <!-- column-name nome -->
+      <column type="gchararray"/>
+      <!-- column-name idade -->
+      <column type="gchararray"/>
+    </columns>
+  </object>
+  <object class="GtkWindow" id="Main">
+    <property name="can_focus">False</property>
+    <property name="title" translatable="yes">App cadastro</property>
+    <property name="resizable">False</property>
+    <property name="window_position">center</property>
+    <property name="default_width">500</property>
+    <property name="default_height">250</property>
+    <property name="hide_titlebar_when_maximized">True</property>
+    <property name="icon_name">applications-accessories</property>
+    <property name="gravity">center</property>
+    <child>
+      <object class="GtkBox" id="dv_v">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="orientation">vertical</property>
+        <child>
+          <object class="GtkLabel" id="titulo">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">Cadastro de pessoas</property>
+            <property name="justify">center</property>
+            <property name="ellipsize">middle</property>
+          </object>
+          <packing>
+            <property name="expand">True</property>
+            <property name="fill">True</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkBox" id="dv_h">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="halign">center</property>
+            <property name="valign">center</property>
+            <property name="spacing">13</property>
+            <child>
+              <object class="GtkLabel" id="lb_nome">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Nome:</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkEntry" id="input_nome">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="placeholder_text" translatable="yes">Nome da pessoa</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="lb_idade">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Idade:</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkEntry" id="input_idade">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="placeholder_text" translatable="yes">Idade da pessoa</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">3</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">False</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="btn_cadastro">
+            <property name="label" translatable="yes">Cadastrar</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="halign">center</property>
+            <property name="valign">center</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">False</property>
+            <property name="padding">5</property>
+            <property name="position">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkAspectFrame">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label_xalign">0</property>
+            <property name="label_yalign">0</property>
+            <property name="shadow_type">in</property>
+            <property name="ratio">0.00009999999747378752</property>
+            <child>
+              <object class="GtkTreeView" id="lista">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="events">GDK_STRUCTURE_MASK | GDK_SCROLL_MASK | GDK_SMOOTH_SCROLL_MASK</property>
+                <property name="margin_start">30</property>
+                <property name="margin_end">30</property>
+                <property name="margin_top">20</property>
+                <property name="margin_bottom">20</property>
+                <property name="vscroll_policy">natural</property>
+                <property name="model">lista1</property>
+                <property name="headers_clickable">False</property>
+                <property name="enable_search">False</property>
+                <property name="enable_grid_lines">both</property>
+                <child internal-child="selection">
+                  <object class="GtkTreeSelection"/>
+                </child>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">True</property>
+            <property name="fill">True</property>
+            <property name="position">3</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+    <child type="titlebar">
+      <placeholder/>
+    </child>
+  </object>
+</interface>
