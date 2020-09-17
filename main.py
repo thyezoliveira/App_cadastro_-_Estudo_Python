@@ -1,20 +1,26 @@
 import gi
 import bd_class
+import threading, time
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk as gtk
+from gi.repository import GLib
+
+def threaded(fn):
+    def wrapper(*args, **kwargs):
+        threading.Thread(target=fn, args=args, kwargs=kwargs).start()
+    return wrapper
 
 class Main:
     def __init__(self):
-        gladefile = "interface1.glade"
-        self.builder = gtk.Builder()
-        self.builder.add_from_file(gladefile)
+        gladefile = "interface1.glade"          #Arquivo de interface glade
+        self.builder = gtk.Builder()            #Criando o builder do gtk
+        self.builder.add_from_file(gladefile)   #Atribuindo o arquivo glade ao builder
 
-        self.cor = "#aa0202"
-        mark = "<span foreground='" + self.cor + "' size='xx-large'>Cadastro</span>"
-        self.titulo = self.builder.get_object("titulo")
-        self.titulo.set_markup(mark)
+        self.cor = "#008800"                    #Cores em hexadecimal
 
         btn_cadastrar = self.builder.get_object("btn_cadastro")
+        self.ppup_caixa = self.builder.get_object("popover")
+        self.ppup_texto = self.builder.get_object("popoverLabel")
         btn_cadastrar.connect("clicked", self.adicionar_linha)
 
         #Acesso ao banco de dados
@@ -45,12 +51,24 @@ class Main:
         self.id = int(len(self.model))
         self.bd.inserir_dados(self.id, self.nomeSaida, self.idadeSaida)
         self.model.append([self.id, self.nomeSaida, self.idadeSaida])
+        self.mostrar_popup()
 
 
     def carregar_itens_da_lista(self):
         self.model.clear()
         for r in self.lista_bd:
             self.model.append([r[0],r[1],r[2]])
+
+    def mostrar_popup(self):
+        msg = "<span foreground='" + self.cor + "'>Adicionado com sucesso!</span>"
+        self.ppup_texto.set_markup(msg)
+        self.ppup_caixa.popup()
+        self.esconder_popup()
+
+    @threaded
+    def esconder_popup(self):
+        time.sleep(3)
+        GLib.idle_add(self.ppup_caixa.popdown)
 
 
 if __name__ == '__main__':

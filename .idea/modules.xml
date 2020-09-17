@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/App cadastro (Estudo Python).iml" filepath="$PROJECT_DIR$/.idea/App cadastro (Estudo Python).iml" />
+      <module fileurl="file://$PROJECT_DIR$/../Glade_estudo_01/.idea/Glade_estudo_01.iml" filepath="$PROJECT_DIR$/../Glade_estudo_01/.idea/Glade_estudo_01.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../Glade_estudo_02/.idea/Glade_estudo_02.iml" filepath="$PROJECT_DIR$/../Glade_estudo_02/.idea/Glade_estudo_02.iml" />
     </modules>
   </component>
 </project>
